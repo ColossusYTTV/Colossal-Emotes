@@ -1,20 +1,15 @@
-﻿using BepInEx;
+﻿// How come I get harassed on discord about fixing ts but never actually see anyone ingame using it 😭, I got like 100 ppl telling me to fix it the day it broke
+
+using BepInEx;
 using Colossal.Patches;
-using Oculus.Interaction.Unity.Input;
 using Photon.Pun;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.Profiling;
 using UnityEngine.UI;
 using UnityEngine.XR;
-using Viveport;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace Colossal
 {
@@ -51,11 +46,11 @@ namespace Colossal
         private bool imToLazy = false;
         private bool wasRightTriggerPressed = false;
 
-
         #region Start and Update
         public void Start()
         {
             HarmonyPatches.ApplyHarmonyPatches();
+
 
             // Enables support for Rift
             string[] oculusDlls = Directory.GetFiles(Environment.CurrentDirectory, "OculusXRPlugin.dll", SearchOption.AllDirectories);
@@ -69,7 +64,7 @@ namespace Colossal
             if (ScriptHolder == null)
             {
                 ScriptHolder = new GameObject();
-                ScriptHolder.name = "ScriptHolder";
+                ScriptHolder.name = "ColossalEmotes (ScriptHolder)";
 
                 ScriptHolder.AddComponent<AssetBundleLoader>();// Loading asset bundles
             }
@@ -190,8 +185,8 @@ namespace Colossal
                         if (emoting) // Only run during a emote
                         {
                             // Making you float
-                            GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.velocity = Vector3.zero;
-                            GorillaLocomotion.Player.Instance.bodyCollider.attachedRigidbody.AddForce(-Physics.gravity, ForceMode.Acceleration);
+                            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.velocity = Vector3.zero;
+                            GorillaLocomotion.GTPlayer.Instance.bodyCollider.attachedRigidbody.AddForce(-Physics.gravity, ForceMode.Acceleration);
 
 
                             // Enables freecam
@@ -257,7 +252,7 @@ namespace Colossal
             AssetBundleLoader.KyleRobot.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body").rotation;
 
 
-            DisableCosmetics();
+            //DisableCosmetics();
 
 
             if (animator == null)
@@ -296,7 +291,7 @@ namespace Colossal
                 Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Putting you back inside your own body
 
 
-                EnableCosmetics();
+                //EnableCosmetics();
 
 
                 if (previousSerializationRate > 0)
@@ -494,37 +489,33 @@ namespace Colossal
         }
         #endregion
 
-        #region Cosmetics
+        #region Cosmetics (Being disabled because im to lazy to update it)
         // Sourced from IIDK emote mod
-        private List<GameObject> portedCosmetics = new List<GameObject> { };
-        public void DisableCosmetics()
-        {
-            try
-            {
-                GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
-                foreach (GameObject Cosmetic in GorillaTagger.Instance.offlineVRRig.cosmetics)
-                {
-                    if (Cosmetic.activeSelf && Cosmetic.transform.parent == GorillaTagger.Instance.offlineVRRig.mainCamera.transform)
-                    {
-                        portedCosmetics.Add(Cosmetic);
-                        Cosmetic.transform.SetParent(GorillaTagger.Instance.offlineVRRig.headMesh.transform, false);
-                        Cosmetic.transform.localPosition += new Vector3(0f, 0.1333f, 0.1f);
-                    }
-                }
-            }
-            catch { }
-        }
+        //private List<GameObject> portedCosmetics = new List<GameObject> { };
+        //public void DisableCosmetics()
+        //{
+        //    GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
+        //    foreach (GameObject Cosmetic in GorillaTagger.Instance.offlineVRRig.cosmetics)
+        //    {
+        //        if (Cosmetic.activeSelf && Cosmetic.transform.parent == GorillaTagger.Instance.offlineVRRig.mainCamera.transform)
+        //        {
+        //            portedCosmetics.Add(Cosmetic);
+        //            Cosmetic.transform.SetParent(GorillaTagger.Instance.offlineVRRig.headMesh.transform, false);
+        //            Cosmetic.transform.localPosition += new Vector3(0f, 0.1333f, 0.1f);
+        //        }
+        //    }
+        //}
 
-        public void EnableCosmetics()
-        {
-            GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
-            foreach (GameObject Cosmetic in portedCosmetics)
-            {
-                Cosmetic.transform.SetParent(GorillaTagger.Instance.offlineVRRig.mainCamera.transform, false);
-                Cosmetic.transform.localPosition -= new Vector3(0f, 0.1333f, 0.1f);
-            }
-            portedCosmetics.Clear();
-        }
+        //public void EnableCosmetics()
+        //{
+        //    GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
+        //    foreach (GameObject Cosmetic in portedCosmetics)
+        //    {
+        //        Cosmetic.transform.SetParent(GorillaTagger.Instance.offlineVRRig.mainCamera.transform, false);
+        //        Cosmetic.transform.localPosition -= new Vector3(0f, 0.1333f, 0.1f);
+        //    }
+        //    portedCosmetics.Clear();
+        //}
         #endregion
 
         #region Flying

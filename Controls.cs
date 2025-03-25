@@ -18,18 +18,6 @@ namespace Colossal
 
     internal class Controls
     {
-        public static Vector2 LeftJoystickAxis()
-        {
-            Vector2 Value;
-
-            if (Plugin.oculus)
-                InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.primary2DAxis, out Value);
-            else
-                Value = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
-
-            return Value;
-        }
-
         public static bool LeftJoystick()
         {
             bool Value;
@@ -54,6 +42,18 @@ namespace Colossal
             return Value;
         }
 
+        public static Vector2 LeftJoystickAxis()
+        {
+            Vector2 Value;
+
+            if (Plugin.oculus)
+                InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.primary2DAxis, out Value);
+            else
+                Value = SteamVR_Actions.gorillaTag_LeftJoystick2DAxis.axis;
+
+            return Value;
+        }
+
         public static Vector2 RightJoystickAxis()
         {
             Vector2 Value;
@@ -66,18 +66,6 @@ namespace Colossal
             return Value;
         }
 
-        public static bool RightTrigger()
-        {
-            bool Value;
-
-            if (Plugin.oculus)
-                InputDevices.GetDeviceAtXRNode(XRNode.RightHand).TryGetFeatureValue(CommonUsages.triggerButton, out Value);
-            else
-                Value = SteamVR_Actions.gorillaTag_RightTriggerClick.GetState(SteamVR_Input_Sources.RightHand);
-
-            return Value;
-        }
-
         public static bool LeftTrigger()
         {
             bool Value;
@@ -86,6 +74,18 @@ namespace Colossal
                 InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.triggerButton, out Value);
             else
                 Value = SteamVR_Actions.gorillaTag_LeftTriggerClick.GetState(SteamVR_Input_Sources.LeftHand);
+
+            return Value;
+        }
+
+        public static bool RightTrigger()
+        {
+            bool Value;
+
+            if (Plugin.oculus)
+                InputDevices.GetDeviceAtXRNode(XRNode.RightHand).TryGetFeatureValue(CommonUsages.triggerButton, out Value);
+            else
+                Value = SteamVR_Actions.gorillaTag_RightTriggerClick.GetState(SteamVR_Input_Sources.RightHand);
 
             return Value;
         }
