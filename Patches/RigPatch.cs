@@ -1,17 +1,22 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace Colossal.Patches
 {
     [HarmonyPatch(typeof(VRRig), "OnDisable")]
-    public class RigPatch
+    internal class DisableRig
     {
         public static bool Prefix(VRRig __instance)
         {
-            return !(__instance == GorillaTagger.Instance.offlineVRRig);
+            return !(__instance == VRRig.LocalRig);
+        }
+    }
+
+    [HarmonyPatch(typeof(VRRigJobManager), "DeregisterVRRig")]
+    public static class DisableRigBypass
+    {
+        public static bool Prefix(VRRigJobManager __instance, VRRig rig)
+        {
+            return !(__instance == VRRig.LocalRig);
         }
     }
 }

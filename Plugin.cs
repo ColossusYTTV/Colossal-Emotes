@@ -4,7 +4,6 @@ using BepInEx;
 using Colossal.Patches;
 using Photon.Pun;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -70,13 +69,13 @@ namespace Colossal
             }
 
 
-            (Menu, menuText) = GUICreator.CreateTextGUI("", "ColossalEmote", TextAnchor.MiddleCenter, new Vector3(0, 0f, 2)); // Please refer to what I commented at the top of GUICreator.CreateTextGUI
+            (Menu, menuText) = GUICreator.CreateTextGUI("", "ColossalEmotes", TextAnchor.MiddleCenter, new Vector3(0, 0f, 2)); // Please refer to what I commented at the top of GUICreator.CreateTextGUI
             if (Menu != null)
                 Menu.SetActive(false);
 
 
             // Adding options to the menu
-            Page1 = new MenuOption[13];
+            Page1 = new MenuOption[14];
             Page1[0] = new MenuOption { Name = "--->", submenu = true };
             Page1[1] = new MenuOption { Name = "All I Want Is You" }; // This is totally a fortnite emote
             Page1[2] = new MenuOption { Name = "Griddy" };
@@ -90,8 +89,9 @@ namespace Colossal
             Page1[10] = new MenuOption { Name = "Miku Miku Beam" };
             Page1[11] = new MenuOption { Name = "Miku Live" };
             Page1[12] = new MenuOption { Name = "Vegetable Juice" };
+            Page1[13] = new MenuOption { Name = "Caramelldansen" };
 
-            Page2 = new MenuOption[12];
+            Page2 = new MenuOption[13];
             Page2[0] = new MenuOption { Name = "--->", submenu = true };
             Page2[1] = new MenuOption { Name = "<---", submenu = true };
             Page2[2] = new MenuOption { Name = "Gangnam Style" };
@@ -104,6 +104,7 @@ namespace Colossal
             Page2[9] = new MenuOption { Name = "Renegade" };
             Page2[10] = new MenuOption { Name = "Evil Plan" };
             Page2[11] = new MenuOption { Name = "Smooth Moves" };
+            Page2[12] = new MenuOption { Name = "Rat Dance" };
 
             Page3 = new MenuOption[12];
             Page3[0] = new MenuOption { Name = "--->", submenu = true };
@@ -194,16 +195,16 @@ namespace Colossal
 
 
                             // Setting positions and rotations for the actual emotes
-                            GorillaTagger.Instance.offlineVRRig.transform.position = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2").transform.position - (AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2").transform.right / 2.5f);
-                            GorillaTagger.Instance.offlineVRRig.transform.rotation = Quaternion.Euler(new Vector3(0f, AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2").transform.rotation.eulerAngles.y, 0f));
+                            VRRig.LocalRig.transform.position = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2").transform.position - (AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2").transform.right / 2.5f);
+                            VRRig.LocalRig.transform.rotation = Quaternion.Euler(new Vector3(0f, AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2").transform.rotation.eulerAngles.y, 0f));
 
-                            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.position = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/LeftShoulder/LeftUpperArm/LeftArm/LeftHand").transform.position;
-                            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.position = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/RightShoulder/RightUpperArm/RightArm/RightHand").transform.position;
+                            VRRig.LocalRig.leftHand.rigTarget.transform.position = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/LeftShoulder/LeftUpperArm/LeftArm/LeftHand").transform.position;
+                            VRRig.LocalRig.rightHand.rigTarget.transform.position = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/RightShoulder/RightUpperArm/RightArm/RightHand").transform.position;
 
-                            GorillaTagger.Instance.offlineVRRig.leftHand.rigTarget.transform.rotation = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/LeftShoulder/LeftUpperArm/LeftArm/LeftHand").transform.rotation * Quaternion.Euler(0, 0, 75);
-                            GorillaTagger.Instance.offlineVRRig.rightHand.rigTarget.transform.rotation = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/RightShoulder/RightUpperArm/RightArm/RightHand").transform.rotation * Quaternion.Euler(180, 0, -75);
+                            VRRig.LocalRig.leftHand.rigTarget.transform.rotation = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/LeftShoulder/LeftUpperArm/LeftArm/LeftHand").transform.rotation * Quaternion.Euler(0, 0, 75);
+                            VRRig.LocalRig.rightHand.rigTarget.transform.rotation = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/RightShoulder/RightUpperArm/RightArm/RightHand").transform.rotation * Quaternion.Euler(180, 0, -75);
 
-                            GorillaTagger.Instance.offlineVRRig.head.rigTarget.transform.rotation = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/Neck/Head").transform.rotation * Quaternion.Euler(0f, 0f, 90f);
+                            VRRig.LocalRig.head.rigTarget.transform.rotation = AssetBundleLoader.KyleRobot.transform.Find("ROOT/Hips/Spine1/Spine2/Neck/Head").transform.rotation * Quaternion.Euler(0f, 0f, 90f);
                         }
 
                         EmoteSelect();
@@ -235,8 +236,8 @@ namespace Colossal
             }
 
 
-            if (GorillaTagger.Instance.offlineVRRig.enabled) // Enabling the ability to move/do stuff with the rig
-                GorillaTagger.Instance.offlineVRRig.enabled = false;
+            if (VRRig.LocalRig.enabled) // Enabling the ability to move/do stuff with the rig
+                VRRig.LocalRig.enabled = false;
 
 
             previousSerializationRate = PhotonNetwork.SerializationRate; // More movement show up server sided
@@ -248,8 +249,8 @@ namespace Colossal
 
 
             // Moving Kyle to your position
-            AssetBundleLoader.KyleRobot.transform.position = GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body").position - new Vector3(0f, 1.15f, 0f);
-            AssetBundleLoader.KyleRobot.transform.rotation = GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body").rotation;
+            AssetBundleLoader.KyleRobot.transform.position = VRRig.LocalRig.transform.Find("RigAnchor/rig/body").position - new Vector3(0f, 1.15f, 0f);
+            AssetBundleLoader.KyleRobot.transform.rotation = VRRig.LocalRig.transform.Find("RigAnchor/rig/body").rotation;
 
 
             //DisableCosmetics();
@@ -279,8 +280,8 @@ namespace Colossal
                 emoting = false;
 
 
-                if (!GorillaTagger.Instance.offlineVRRig.enabled) // Disabling the ability to move/do stuff with the rig
-                    GorillaTagger.Instance.offlineVRRig.enabled = true;
+                if (!VRRig.LocalRig.enabled) // Disabling the ability to move/do stuff with the rig
+                    VRRig.LocalRig.enabled = true;
 
 
                 if (PhotonNetwork.InRoom)
@@ -494,13 +495,13 @@ namespace Colossal
         //private List<GameObject> portedCosmetics = new List<GameObject> { };
         //public void DisableCosmetics()
         //{
-        //    GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
-        //    foreach (GameObject Cosmetic in GorillaTagger.Instance.offlineVRRig.cosmetics)
+        //    VRRig.LocalRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("Default");
+        //    foreach (GameObject Cosmetic in VRRig.LocalRig.cosmetics)
         //    {
-        //        if (Cosmetic.activeSelf && Cosmetic.transform.parent == GorillaTagger.Instance.offlineVRRig.mainCamera.transform)
+        //        if (Cosmetic.activeSelf && Cosmetic.transform.parent == VRRig.LocalRig.mainCamera.transform)
         //        {
         //            portedCosmetics.Add(Cosmetic);
-        //            Cosmetic.transform.SetParent(GorillaTagger.Instance.offlineVRRig.headMesh.transform, false);
+        //            Cosmetic.transform.SetParent(VRRig.LocalRig.headMesh.transform, false);
         //            Cosmetic.transform.localPosition += new Vector3(0f, 0.1333f, 0.1f);
         //        }
         //    }
@@ -508,10 +509,10 @@ namespace Colossal
 
         //public void EnableCosmetics()
         //{
-        //    GorillaTagger.Instance.offlineVRRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
+        //    VRRig.LocalRig.transform.Find("RigAnchor/rig/body/head/gorillaface").gameObject.layer = LayerMask.NameToLayer("MirrorOnly");
         //    foreach (GameObject Cosmetic in portedCosmetics)
         //    {
-        //        Cosmetic.transform.SetParent(GorillaTagger.Instance.offlineVRRig.mainCamera.transform, false);
+        //        Cosmetic.transform.SetParent(VRRig.LocalRig.mainCamera.transform, false);
         //        Cosmetic.transform.localPosition -= new Vector3(0f, 0.1333f, 0.1f);
         //    }
         //    portedCosmetics.Clear();

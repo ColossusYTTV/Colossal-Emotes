@@ -1,9 +1,6 @@
 ﻿
 using BepInEx;
-using GorillaLocomotion;
 using HarmonyLib;
-using System.Diagnostics;
-using System.Net.NetworkInformation;
 using System.Reflection;
 using UnityEngine;
 

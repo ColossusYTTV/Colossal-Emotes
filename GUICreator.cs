@@ -1,7 +1,4 @@
-﻿using Colossal.Patches;
-using System.Diagnostics;
-using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Colossal
