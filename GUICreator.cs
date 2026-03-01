@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 
 namespace Colossal
@@ -21,7 +22,9 @@ namespace Colossal
             canvas.renderMode = RenderMode.WorldSpace;
             canvas.worldCamera = Camera.main;
 
-            HUDObj.AddComponent<CanvasScaler>();
+            CanvasScaler scaler = HUDObj.AddComponent<CanvasScaler>();
+            scaler.dynamicPixelsPerUnit = 10;
+
             HUDObj.AddComponent<GraphicRaycaster>();
 
             RectTransform rectTransform = HUDObj.GetComponent<RectTransform>();
@@ -33,7 +36,7 @@ namespace Colossal
             Text MenuText = menuTextObj.AddComponent<Text>();
             MenuText.text = text;
             MenuText.fontSize = 10;
-            MenuText.font = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/TreeRoomInteractables/UI/-- PhysicalComputer UI --/keyboard/Buttons/Text/u").GetComponent<Text>().font;
+            MenuText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
             MenuText.rectTransform.sizeDelta = new Vector2(260, 180);
             MenuText.rectTransform.localScale = new Vector3(0.01f, 0.01f, 1f);
             MenuText.rectTransform.localPosition = loctrans;

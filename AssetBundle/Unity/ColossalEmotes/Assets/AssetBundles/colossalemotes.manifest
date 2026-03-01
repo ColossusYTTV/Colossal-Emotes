@@ -1,0 +1,139 @@
+ManifestFileVersion: 0
+CRC: 3280636142
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 500eff1572062e1be8d1c4db109d5701
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c33bb1b28b4b852f7325a00aa483784f
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.FontData
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+Assets:
+- Assets/ColossalEmotes.prefab
+- Assets/sounds/orangejustice.ogg
+- Assets/sounds/outwest.ogg
+- Assets/sounds/mikulive.ogg
+- Assets/sounds/backstroke.ogg
+- Assets/sounds/breakin.ogg
+- Assets/sounds/groovejam.ogg
+- Assets/sounds/jabbaswitchway.ogg
+- Assets/sounds/boneless.ogg
+- Assets/sounds/discofever.ogg
+- Assets/sounds/macarena.ogg
+- Assets/sounds/crackdown.ogg
+- Assets/sounds/scenario.ogg
+- Assets/sounds/toosieslide.ogg
+- Assets/sounds/dancemoves.ogg
+- Assets/sounds/itsdynamite.ogg
+- Assets/sounds/breakneck.ogg
+- Assets/sounds/pawsandclaws.ogg
+- Assets/sounds/boysaliar.ogg
+- Assets/sounds/chickenwing.ogg
+- Assets/sounds/mikumikubeam.ogg
+- Assets/sounds/internetyamero.mp3
+- Assets/Materials/colossus.mat
+- Assets/sounds/emptyoutyourpockets.ogg
+- Assets/sounds/cupidsarrow.ogg
+- Assets/colossus.png
+- Assets/sounds/boogiedown.ogg
+- Assets/sounds/luciddreams.ogg
+- Assets/sounds/feellikegod.ogg
+- Assets/sounds/myworld.ogg
+- Assets/sounds/savage.ogg
+- Assets/sounds/griddy.ogg
+- Assets/sounds/breakdown.ogg
+- Assets/sounds/billybounce.ogg
+- Assets/sounds/gangnamstyle.ogg
+- Assets/sounds/boogiebomb.ogg
+- Assets/sounds/californiagurls.ogg
+- Assets/sounds/tekit.ogg
+- Assets/sounds/zany.ogg
+- Assets/sounds/electroshuffle.ogg
+- Assets/sounds/sayso.ogg
+- Assets/sounds/poki.ogg
+- Assets/sounds/distraction.ogg
+- Assets/sounds/smoothmoves.ogg
+- Assets/sounds/floss.ogg
+- Assets/sounds/caramelldansen.mp3
+- Assets/sounds/jumpstyle.ogg
+- Assets/sounds/evilplan.ogg
+- Assets/sounds/bestmates.ogg
+- Assets/sounds/robot.ogg
+- Assets/sounds/crabby.ogg
+- Assets/sounds/marshwalk.ogg
+- Assets/sounds/fresh.ogg
+- Assets/sounds/electroswing.ogg
+- Assets/sounds/caffeinated.ogg
+- Assets/sounds/rollie.ogg
+- Assets/sounds/vegetablejuice.ogg
+- Assets/sounds/daydream.ogg
+- Assets/sounds/alliwantisyou.ogg
+- Assets/sounds/renegade.ogg
+- Assets/sounds/socialcredit.mp3
+- Assets/sounds/misstherage.ogg
+- Assets/sounds/starpower.ogg
+- Assets/sounds/takethel.ogg
+- Assets/sounds/nevergonna.ogg
+- Assets/sounds/pullup.ogg
+- Assets/sounds/blindinglights.ogg
+- Assets/sounds/cleangroove.ogg
+- Assets/sounds/flapper.ogg
+- Assets/sounds/popularvibe.ogg
+- Assets/sounds/lastforever.ogg
+Dependencies: []

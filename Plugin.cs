@@ -91,34 +91,36 @@ namespace Colossal
             Page1[12] = new MenuOption { Name = "Vegetable Juice" };
             Page1[13] = new MenuOption { Name = "Caramelldansen" };
 
-            Page2 = new MenuOption[13];
+            Page2 = new MenuOption[14];
             Page2[0] = new MenuOption { Name = "--->", submenu = true };
             Page2[1] = new MenuOption { Name = "<---", submenu = true };
-            Page2[2] = new MenuOption { Name = "Gangnam Style" };
-            Page2[3] = new MenuOption { Name = "Never Gonna" };
-            Page2[4] = new MenuOption { Name = "Feel Like God" };
-            Page2[5] = new MenuOption { Name = "Macarena" };
-            Page2[6] = new MenuOption { Name = "Cupids Arrow" };
-            Page2[7] = new MenuOption { Name = "Paws And Claws" };
-            Page2[8] = new MenuOption { Name = "Jabba Switch Way" };
-            Page2[9] = new MenuOption { Name = "Renegade" };
-            Page2[10] = new MenuOption { Name = "Evil Plan" };
-            Page2[11] = new MenuOption { Name = "Smooth Moves" };
-            Page2[12] = new MenuOption { Name = "Rat Dance" };
-
-            Page3 = new MenuOption[12];
+            Page2[2] = new MenuOption { Name = "Social Credit" };
+            Page2[3] = new MenuOption { Name = "Gangnam Style" };
+            Page2[4] = new MenuOption { Name = "Never Gonna" };
+            Page2[5] = new MenuOption { Name = "Feel Like God" };
+            Page2[6] = new MenuOption { Name = "Macarena" };
+            Page2[7] = new MenuOption { Name = "Cupids Arrow" };
+            Page2[8] = new MenuOption { Name = "Paws And Claws" };
+            Page2[9] = new MenuOption { Name = "Jabba Switch Way" };
+            Page2[10] = new MenuOption { Name = "Renegade" };
+            Page2[11] = new MenuOption { Name = "Evil Plan" };
+            Page2[12] = new MenuOption { Name = "Smooth Moves" };
+            Page2[13] = new MenuOption { Name = "Rat Dance" };
+            
+            Page3 = new MenuOption[13];
             Page3[0] = new MenuOption { Name = "--->", submenu = true };
             Page3[1] = new MenuOption { Name = "<---", submenu = true };
-            Page3[2] = new MenuOption { Name = "Its Dynamite" };
-            Page3[3] = new MenuOption { Name = "My World" };
-            Page3[4] = new MenuOption { Name = "Last Forever" };
-            Page3[5] = new MenuOption { Name = "Savage" };
-            Page3[6] = new MenuOption { Name = "Say So" };
-            Page3[7] = new MenuOption { Name = "Rollie" };
-            Page3[8] = new MenuOption { Name = "Out West" };
-            Page3[9] = new MenuOption { Name = "Toosie Slide" };
-            Page3[10] = new MenuOption { Name = "Marsh Walk" };
-            Page3[11] = new MenuOption { Name = "Boogie Bomb" };
+            Page3[2] = new MenuOption { Name = "Internet Yamero" };
+            Page3[3] = new MenuOption { Name = "Its Dynamite" };
+            Page3[4] = new MenuOption { Name = "My World" };
+            Page3[5] = new MenuOption { Name = "Last Forever" };
+            Page3[6] = new MenuOption { Name = "Savage" };
+            Page3[7] = new MenuOption { Name = "Say So" };
+            Page3[8] = new MenuOption { Name = "Rollie" };
+            Page3[9] = new MenuOption { Name = "Out West" };
+            Page3[10] = new MenuOption { Name = "Toosie Slide" };
+            Page3[11] = new MenuOption { Name = "Marsh Walk" };
+            Page3[12] = new MenuOption { Name = "Boogie Bomb" };
 
             Page4 = new MenuOption[12];
             Page4[0] = new MenuOption { Name = "--->", submenu = true };
@@ -180,8 +182,8 @@ namespace Colossal
                 {
                     if (AssetBundleLoader.KyleRobot != null)
                     {
-                        if (AssetBundleLoader.KyleRobot.transform.GetChild(0).gameObject.GetComponent<Renderer>().renderingLayerMask != 0)
-                            AssetBundleLoader.KyleRobot.transform.GetChild(0).gameObject.GetComponent<Renderer>().renderingLayerMask = 0; // Making kyle invisible
+                        //if (AssetBundleLoader.KyleRobot.transform.GetChild(0).gameObject.GetComponent<Renderer>().renderingLayerMask != 0)
+                           // AssetBundleLoader.KyleRobot.transform.GetChild(0).gameObject.GetComponent<Renderer>().renderingLayerMask = 0; // Making kyle invisible
 
                         if (emoting) // Only run during a emote
                         {
@@ -249,8 +251,8 @@ namespace Colossal
 
 
             // Moving Kyle to your position
-            AssetBundleLoader.KyleRobot.transform.position = VRRig.LocalRig.transform.Find("RigAnchor/rig/body").position - new Vector3(0f, 1.15f, 0f);
-            AssetBundleLoader.KyleRobot.transform.rotation = VRRig.LocalRig.transform.Find("RigAnchor/rig/body").rotation;
+            AssetBundleLoader.KyleRobot.transform.position = VRRig.LocalRig.transform.position - new Vector3(0f, 1.15f, 0f);
+            AssetBundleLoader.KyleRobot.transform.rotation = VRRig.LocalRig.transform.rotation;
 
 
             //DisableCosmetics();

@@ -3,20 +3,25 @@
 namespace Colossal.Patches
 {
     [HarmonyPatch(typeof(VRRig), "OnDisable")]
-    internal class DisableRig
+    public class RigPatch
     {
-        public static bool Prefix(VRRig __instance)
-        {
-            return !(__instance == VRRig.LocalRig);
-        }
+        public static bool Prefix(VRRig __instance) =>
+            !__instance.isLocal;
     }
 
-    [HarmonyPatch(typeof(VRRigJobManager), "DeregisterVRRig")]
-    public static class DisableRigBypass
+    // Because of ghost view
+    [HarmonyPatch(typeof(VRRig), "Awake")]
+    public class RigPatch2
     {
-        public static bool Prefix(VRRigJobManager __instance, VRRig rig)
-        {
-            return !(__instance == VRRig.LocalRig);
-        }
+        public static bool Prefix(VRRig __instance) =>
+            __instance.gameObject.name != "Local Gorilla Player(Clone)";
+    }
+
+    // Ugly code. Fuck optimization
+    [HarmonyPatch(typeof(VRRig), "PostTick")]
+    public class RigPatch3
+    {
+        public static bool Prefix(VRRig __instance) =>
+            !__instance.isLocal || __instance.enabled;
     }
 }
